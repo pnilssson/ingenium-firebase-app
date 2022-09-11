@@ -5,7 +5,10 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
 
 @NgModule({
   declarations: [NavbarComponent],
-  imports: [BrowserModule, BrowserAnimationsModule],
-  exports: [NavbarComponent]
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+  ],
+  exports: [NavbarComponent],
 })
 export class CoreModule {}
