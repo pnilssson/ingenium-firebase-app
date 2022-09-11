@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ingenium-firebase": {
+      "hosting": {
+        "ingenium-api": [
+          "ingenium-firebase"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ingenium-firebase"
+  }
+}
