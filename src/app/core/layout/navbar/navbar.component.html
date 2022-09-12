@@ -1,34 +1,44 @@
 <nav class="navbar navbar-expand-lg">
-  <div class="container-xxl">
-    <a class="navbar-brand" href="#">I N G E N I U M</a>
-    <button
-      class="navbar-toggler border border-0"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
-        <li class="nav-item" *ngIf="auth.user$ | async">
-          <a class="nav-link" href="#">Dashboard</a>
-        </li>
-        <li class="nav-item">
-          <div *ngIf="auth.user$ | async; then signOut; else signIn"></div>
-        </li>
-      </ul>
-    </div>
+  <a class="navbar-brand" href="#">I N G E N I U M</a>
+  <button
+    class="navbar-toggler border border-0"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+      <li class="nav-item" *ngIf="auth.user$ | async">
+        <a class="nav-link" routerLink="/athlete/dashboard">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <div *ngIf="auth.user$ | async; then signOut; else signIn"></div>
+      </li>
+    </ul>
   </div>
 </nav>
 
 <ng-template #signIn>
-  <button type="button" class="btn btn-sm btn-outline-secondary"(click)="auth.googleSignin()">Sign in</button>
+  <button
+    type="button"
+    class="btn btn-sm btn-outline-dark"
+    routerLink="/auth"
+  >
+    Sign in
+  </button>
 </ng-template>
 
 <ng-template #signOut>
-  <button type="button" class="btn btn-sm btn-outline-secondary" (click)="auth.signOut()">Sign out</button>
+  <button
+    type="button"
+    class="btn btn-sm btn-outline-dark"
+    (click)="auth.signOut()"
+  >
+    Sign out
+  </button>
 </ng-template>

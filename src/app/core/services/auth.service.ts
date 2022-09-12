@@ -35,12 +35,20 @@ export class AuthService {
   async googleSignin() {
     const provider = new firebase.auth.GoogleAuthProvider();
     const credentials = await this.auth.signInWithPopup(provider);
-    return this.updateUserData(credentials.user);
+    this.updateUserData(credentials.user);
+    this.router.navigate(['/athlete/dashboard']);
+  }
+
+  async signIn(email: string, password: string) {
+    const credentials = await this.auth.signInWithEmailAndPassword(email, password);
+    this.updateUserData(credentials.user);
+
+    this.router.navigate(['/athlete/dashboard']);
   }
 
   async signOut() {
     await this.auth.signOut();
-    this.router.navigate(['/']);
+    this.router.navigate(['/home']);
   }
 
   private updateUserData(user: firebase.User | null) {
@@ -51,13 +59,12 @@ export class AuthService {
 
       const data: User = {
         uid: user.uid,
-        email: user.email ?? undefined,
-        displayName: user.displayName ?? undefined,
+        email: user.email ?? null,
+        displayName: user.displayName ?? null,
+        emailVerified: user.emailVerified
       };
 
-      return userRef.set(data, { merge: true });
+      userRef.set(data);
     }
-
-    return user;
   }
 }
