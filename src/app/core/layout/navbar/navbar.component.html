@@ -12,33 +12,83 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+    <ul class="navbar-nav ms-lg-auto mb-2 mb-lg-0">
       <li class="nav-item" *ngIf="auth.user$ | async">
         <a class="nav-link" routerLink="/athlete/dashboard">Dashboard</a>
       </li>
-      <li class="nav-item">
-        <div *ngIf="auth.user$ | async; then signOut; else signIn"></div>
+      <!-- Big screens dropdown with icon -->
+      <li class="d-none d-lg-block nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <fa-icon [icon]="faUser"></fa-icon>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end nav-dropdown">
+          <div *ngIf="auth.user$ | async; then signOut; else signIn"></div>
+          <li><hr class="dropdown-divider" /></li>
+          <button
+            type="button"
+            class="dropdown-item"
+            routerLink="/auth/sign-up"
+          >
+            Sign up
+          </button>
+        </ul>
+      </li>
+      <!-- Small screens list -->
+      <li class="d-block d-lg-none mt-2 nav-item">
+        <div
+          *ngIf="auth.user$ | async; then signOutMobile; else signInMobile"
+        ></div>
+      </li>
+      <hr />
+      <li class="d-block d-lg-none nav-item">
+        <div
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          routerLink="/auth/sign-up"
+        >
+          Sign up
+        </div>
       </li>
     </ul>
   </div>
 </nav>
 
+<!-- Large screens -->
 <ng-template #signIn>
-  <button
-    type="button"
-    class="btn btn-sm btn-outline-dark"
-    routerLink="/auth"
-  >
+  <button type="button" class="dropdown-item" routerLink="/auth">
     Sign in
   </button>
 </ng-template>
 
 <ng-template #signOut>
-  <button
-    type="button"
-    class="btn btn-sm btn-outline-dark"
+  <button type="button" class="dropdown-item" (click)="auth.signOut()">
+    Sign out
+  </button>
+</ng-template>
+
+<!-- Small screens -->
+<ng-template #signInMobile>
+  <div
+    data-bs-toggle="collapse"
+    data-bs-target="#navbarSupportedContent"
+    routerLink="/auth"
+  >
+    Sign in
+  </div>
+</ng-template>
+
+<ng-template #signOutMobile>
+  <div
+    data-bs-toggle="collapse"
+    data-bs-target="#navbarSupportedContent"
     (click)="auth.signOut()"
   >
     Sign out
-  </button>
+  </div>
 </ng-template>

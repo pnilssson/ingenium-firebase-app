@@ -19,7 +19,7 @@ export class AuthService {
   constructor(
     private auth: AngularFireAuth,
     private afs: AngularFirestore,
-    private router: Router
+    private router: Router,
   ) {
     this.user$ = this.auth.authState.pipe(
       switchMap((user) => {
@@ -32,6 +32,13 @@ export class AuthService {
     );
   }
 
+  async createUserWithEmailAndPassword(email: string, password: string, name: string | null = null) {
+    const credentials = await this.auth.createUserWithEmailAndPassword(email, password);
+    credentials.user?.sendEmailVerification();
+    this.updateUserData(credentials.user, name);
+    this.router.navigate(['/athlete/dashboard']);
+  }
+
   async googleSignin() {
     const provider = new firebase.auth.GoogleAuthProvider();
     const credentials = await this.auth.signInWithPopup(provider);
@@ -39,11 +46,15 @@ export class AuthService {
     this.router.navigate(['/athlete/dashboard']);
   }
 
-  async signIn(email: string, password: string) {
+  async signInWithEmailAndPassword(email: string, password: string) {
     const credentials = await this.auth.signInWithEmailAndPassword(email, password);
     this.updateUserData(credentials.user);
 
     this.router.navigate(['/athlete/dashboard']);
+  }
+
+  async sendPasswordResetEmail(email: string) {
+    await this.auth.sendPasswordResetEmail(email);
   }
 
   async signOut() {
@@ -51,7 +62,7 @@ export class AuthService {
     this.router.navigate(['/home']);
   }
 
-  private updateUserData(user: firebase.User | null) {
+  private updateUserData(user: firebase.User | null, name: string | null = null) {
     if (user) {
       const userRef: AngularFirestoreDocument<User> = this.afs.doc(
         `users/${user.uid}`
@@ -60,7 +71,7 @@ export class AuthService {
       const data: User = {
         uid: user.uid,
         email: user.email ?? null,
-        displayName: user.displayName ?? null,
+        displayName: user.displayName ?? name,
         emailVerified: user.emailVerified
       };
 
