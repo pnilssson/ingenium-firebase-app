@@ -29,32 +29,12 @@
         </a>
         <ul class="dropdown-menu dropdown-menu-end nav-dropdown">
           <div *ngIf="auth.user$ | async; then signOut; else signIn"></div>
-          <li><hr class="dropdown-divider" /></li>
-          <button
-            type="button"
-            class="dropdown-item"
-            routerLink="/auth/sign-up"
-          >
-            Sign up
-          </button>
         </ul>
       </li>
       <!-- Small screens list -->
-      <li class="d-block d-lg-none mt-2 nav-item">
-        <div
-          *ngIf="auth.user$ | async; then signOutMobile; else signInMobile"
-        ></div>
-      </li>
-      <hr />
-      <li class="d-block d-lg-none nav-item">
-        <div
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          routerLink="/auth/sign-up"
-        >
-          Sign up
-        </div>
-      </li>
+      <div
+        *ngIf="auth.user$ | async; then signOutMobile; else signInMobile"
+      ></div>
     </ul>
   </div>
 </nav>
@@ -63,6 +43,10 @@
 <ng-template #signIn>
   <button type="button" class="dropdown-item" routerLink="/auth">
     Sign in
+  </button>
+  <li><hr class="dropdown-divider" /></li>
+  <button type="button" class="dropdown-item" routerLink="/auth/sign-up">
+    Sign up
   </button>
 </ng-template>
 
@@ -74,21 +58,39 @@
 
 <!-- Small screens -->
 <ng-template #signInMobile>
-  <div
-    data-bs-toggle="collapse"
-    data-bs-target="#navbarSupportedContent"
-    routerLink="/auth"
-  >
-    Sign in
-  </div>
+  <li class="d-block d-lg-none mt-2 nav-item">
+    <div
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      routerLink="/auth"
+    >
+      Sign in
+    </div>
+  </li>
+
+  <li class="d-block d-lg-none mt-2 nav-item">
+    <hr />
+  </li>
+
+  <li class="d-block d-lg-none nav-item">
+    <div
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      routerLink="/auth/sign-up"
+    >
+      Sign up
+    </div>
+  </li>
 </ng-template>
 
 <ng-template #signOutMobile>
-  <div
-    data-bs-toggle="collapse"
-    data-bs-target="#navbarSupportedContent"
-    (click)="auth.signOut()"
-  >
-    Sign out
-  </div>
+  <li class="d-block d-lg-none mt-2 nav-item">
+    <div
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      (click)="auth.signOut()"
+    >
+      Sign out
+    </div>
+  </li>
 </ng-template>
