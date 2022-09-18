@@ -18,6 +18,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
   ]
 })
 export class SharedModule { }
