@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { ToastService } from 'src/app/core/services/toast.service';
 
@@ -11,10 +11,11 @@ import { ToastService } from 'src/app/core/services/toast.service';
 export class ForgotPasswordComponent implements OnInit {
   forgotPasswordForm: FormGroup;
 
+  submitted = false;
+
   constructor(
     private fb: FormBuilder,
     public auth: AuthService,
-    private toastService: ToastService
   ) {
     this.forgotPasswordForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -23,13 +24,14 @@ export class ForgotPasswordComponent implements OnInit {
 
   ngOnInit() {}
   send() {
-    if (this.forgotPasswordForm.valid) {
-      this.auth.sendPasswordResetEmail(this.forgotPasswordForm.value.email);
-    } else {
-      this.toastService.showToast({
-        type: 'warning',
-        msg: 'Invalid email.',
-      });
+    if (this.forgotPasswordForm.invalid) {
+      this.submitted = true;
+      return;
     }
+    this.auth.sendPasswordResetEmail(this.forgotPasswordForm.value.email);
+  }
+
+  get f(): { [key: string]: AbstractControl } {
+    return this.forgotPasswordForm.controls;
   }
 }

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg">
-  <a class="navbar-brand" href="#">I N G E N I U M</a>
+  <a class="navbar-brand" routerLink="/home">I N G E N I U M</a>
   <button
     class="navbar-toggler border border-0"
     type="button"
@@ -12,11 +12,14 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ms-lg-auto mb-2 mb-lg-0">
+    <!-- Big screens dropdown with icon -->
+    <ul class="navbar-nav d-none d-lg-flex ms-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home">Home</a>
+      </li>
       <li class="nav-item" *ngIf="auth.user$ | async">
         <a class="nav-link" routerLink="/athlete/dashboard">Dashboard</a>
       </li>
-      <!-- Big screens dropdown with icon -->
       <li class="d-none d-lg-block nav-item dropdown">
         <a
           class="nav-link dropdown-toggle"
@@ -31,10 +34,30 @@
           <div *ngIf="auth.user$ | async; then signOut; else signIn"></div>
         </ul>
       </li>
-      <!-- Small screens list -->
-      <div
+    </ul>
+    <!-- Small screens -->
+    <ul class="navbar-nav d-flex d-lg-none">
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/home"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          >Home</a
+        >
+      </li>
+      <li class="nav-item" *ngIf="auth.user$ | async">
+        <a
+          class="nav-link"
+          routerLink="/athlete/dashboard"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          >Dashboard</a
+        >
+      </li>
+      <ng-container
         *ngIf="auth.user$ | async; then signOutMobile; else signInMobile"
-      ></div>
+      ></ng-container>
     </ul>
   </div>
 </nav>
@@ -58,39 +81,38 @@
 
 <!-- Small screens -->
 <ng-template #signInMobile>
-  <li class="d-block d-lg-none mt-2 nav-item">
-    <div
+  <li class="d-block d-lg-none nav-item">
+    <a
+      class="nav-link"
       data-bs-toggle="collapse"
       data-bs-target="#navbarSupportedContent"
       routerLink="/auth"
     >
       Sign in
-    </div>
-  </li>
-
-  <li class="d-block d-lg-none mt-2 nav-item">
-    <hr />
+    </a>
   </li>
 
   <li class="d-block d-lg-none nav-item">
-    <div
+    <a
+      class="nav-link"
       data-bs-toggle="collapse"
       data-bs-target="#navbarSupportedContent"
       routerLink="/auth/sign-up"
     >
       Sign up
-    </div>
+    </a>
   </li>
 </ng-template>
 
 <ng-template #signOutMobile>
-  <li class="d-block d-lg-none mt-2 nav-item">
-    <div
+  <li class="d-block d-lg-none nav-item">
+    <a
+      class="nav-link"
       data-bs-toggle="collapse"
       data-bs-target="#navbarSupportedContent"
       (click)="auth.signOut()"
     >
       Sign out
-    </div>
+    </a>
   </li>
 </ng-template>

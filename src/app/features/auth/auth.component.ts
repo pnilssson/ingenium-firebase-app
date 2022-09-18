@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { ToastService } from 'src/app/core/services/toast.service';
 
@@ -11,6 +11,8 @@ import { ToastService } from 'src/app/core/services/toast.service';
 export class AuthComponent implements OnInit {
   signInForm: FormGroup;
 
+  submitted = false;
+
   constructor(
     public auth: AuthService,
     private fb: FormBuilder,
@@ -18,23 +20,25 @@ export class AuthComponent implements OnInit {
   ) {
     this.signInForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
 
   ngOnInit(): void {}
 
   signIn() {
-    if (this.signInForm.valid) {
-      this.auth.signInWithEmailAndPassword(
-        this.signInForm.value.email!,
-        this.signInForm.value.password!
-      );
-    } else {
-      this.toastService.showToast({
-        type: 'warning',
-        msg: 'Invalid sign in information. Please provide a valid email and a minimum eight letter password.',
-      });
+    if (this.signInForm.invalid) {
+      this.submitted = true;
+      return;
     }
+
+    this.auth.signInWithEmailAndPassword(
+      this.signInForm.value.email!,
+      this.signInForm.value.password!
+    );
+  }
+  
+  get f(): { [key: string]: AbstractControl } {
+    return this.signInForm.controls;
   }
 }
