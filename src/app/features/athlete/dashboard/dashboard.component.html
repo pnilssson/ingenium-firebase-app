@@ -1,0 +1,11 @@
+<div class="row mt-3" *ngIf="auth.user$ | async as user">
+  <div class="col-12 d-flex">
+    <h4 class="">Dashboard</h4>
+    <div class="ms-auto">
+      <app-add-workout-modal></app-add-workout-modal>
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="lead">{{ user.displayName }}</div>
+  </div>
+</div>

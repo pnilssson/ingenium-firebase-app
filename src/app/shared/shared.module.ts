@@ -3,9 +3,11 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AddWorkoutModalComponent } from './components/add-workout-modal/add-workout-modal.component';
+import { AddWorkoutFormComponent } from './components/add-workout-form/add-workout-form.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [AddWorkoutModalComponent, AddWorkoutFormComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -19,6 +21,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule,
+    AddWorkoutModalComponent
   ]
 })
 export class SharedModule { }

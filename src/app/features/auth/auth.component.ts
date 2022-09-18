@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { ToastService } from 'src/app/core/services/toast.service';
 
 @Component({
   selector: 'app-auth',
@@ -16,7 +15,6 @@ export class AuthComponent implements OnInit {
   constructor(
     public auth: AuthService,
     private fb: FormBuilder,
-    private toastService: ToastService
   ) {
     this.signInForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
