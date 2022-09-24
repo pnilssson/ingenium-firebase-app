@@ -1,0 +1,24 @@
+<div class="card" *ngIf="workout">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    <h6 class="mb-0">
+      <fa-icon
+        *ngIf="icon"
+        class="pe-2"
+        [icon]="icon"
+        [styles]="{ color: '#2F4F4F' }"
+      ></fa-icon
+      >{{ workout.type.name }}
+    </h6>
+    <app-workout-modal [workout]="workout" [edit]="true"></app-workout-modal>
+  </div>
+  <div class="card-body">
+    <h6 class="card-title">{{ workout.completedDate | date }}</h6>
+    <h6 class="card-subtitle mb-2 text-muted">{{ workout.time }} minutes</h6>
+    <p
+      class="card-text card-description"
+      *ngIf="workout.description && showDescription"
+    >
+      {{ workout.description }}
+    </p>
+  </div>
+</div>

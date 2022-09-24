@@ -72,7 +72,8 @@ export class AuthService {
         uid: user.uid,
         email: user.email ?? null,
         displayName: user.displayName ?? name,
-        emailVerified: user.emailVerified
+        emailVerified: user.emailVerified,
+        created: user.metadata.creationTime
       };
 
       userRef.set(data);

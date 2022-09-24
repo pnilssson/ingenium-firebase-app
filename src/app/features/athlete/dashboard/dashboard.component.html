@@ -2,9 +2,18 @@
   <div class="col-12 mt-3">
     <div class="ms-auto">
       <div class="card bs-primary">
-        <div class="card-header d-flex align-items-center justify-content-between">
-          <h6>Latest workouts</h6>
-          <app-add-workout-modal></app-add-workout-modal>
+        <div
+          class="card-header d-flex align-items-center justify-content-between"
+        >
+          <h6 class="mb-0">Latest workouts</h6>
+          <app-workout-modal></app-workout-modal>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 col-lg-3" *ngFor="let workout of latestWorkouts">
+              <app-workout-small [workout]="workout"></app-workout-small>
+            </div>
+          </div>
         </div>
       </div>
     </div>

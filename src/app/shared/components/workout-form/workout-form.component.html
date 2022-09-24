@@ -19,8 +19,15 @@
       </div>
     </div>
     <div class="col-12 mb-3">
-      <select class="form-select" formControlName="type" [ngClass]="{ 'is-invalid': submitted && f['type'].errors }">
-        <option *ngFor="let workoutType of workoutTypes$ | async" [ngValue]="workoutType">
+      <select
+        class="form-select"
+        formControlName="type"
+        [ngClass]="{ 'is-invalid': submitted && f['type'].errors }"
+      >
+        <option
+          *ngFor="let workoutType of workoutTypes"
+          [ngValue]="workoutType"
+        >
           {{ workoutType.name }}
         </option>
       </select>
