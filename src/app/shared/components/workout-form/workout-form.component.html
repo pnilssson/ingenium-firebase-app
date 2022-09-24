@@ -1,0 +1,70 @@
+<div class="row">
+  <form [formGroup]="workoutForm" (submit)="save()">
+    <div class="col-12 mb-3">
+      <div class="input-group">
+        <span for="date" class="input-group-text">Date</span>
+        <input
+          role="button"
+          class="form-control"
+          [weekdays]="false"
+          outsideDays="collapsed"
+          id="date"
+          readonly
+          name="dp"
+          formControlName="date"
+          ngbDatepicker
+          #d="ngbDatepicker"
+          (click)="d.toggle()"
+        />
+      </div>
+    </div>
+    <div class="col-12 mb-3">
+      <select class="form-select" formControlName="type" [ngClass]="{ 'is-invalid': submitted && f['type'].errors }">
+        <option *ngFor="let workoutType of workoutTypes$ | async" [ngValue]="workoutType">
+          {{ workoutType.name }}
+        </option>
+      </select>
+      <div *ngIf="submitted && f['type'].errors" class="invalid-feedback">
+        <div *ngIf="f['type'].errors?.['required']">Type is required</div>
+      </div>
+    </div>
+    <div class="col-12 mb-3">
+      <div class="form-floating">
+        <input
+          type="number"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f['time'].errors }"
+          id="time"
+          placeholder="Time"
+          formControlName="time"
+        />
+        <label for="time">Time</label>
+        <div *ngIf="submitted && f['time'].errors" class="invalid-feedback">
+          <div *ngIf="f['time'].errors?.['required']">Time is required</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 mb-3">
+      <div class="form-floating">
+        <textarea
+          type="text"
+          class="form-control"
+          id="description"
+          placeholder="Description"
+          formControlName="description"
+        ></textarea>
+        <label for="description">Description</label>
+      </div>
+    </div>
+    <div class="col-12 d-flex justify-content-end">
+      <button
+        type="button"
+        class="btn btn-secondary-outline"
+        (click)="cancel()"
+      >
+        Cancel
+      </button>
+      <button type="submit" class="btn btn-slate-light ms-2">Save</button>
+    </div>
+  </form>
+</div>

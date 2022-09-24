@@ -19,7 +19,7 @@
           <a class="nav-link" routerLink="/home">Home</a>
         </li>
         <li class="nav-item" *ngIf="auth.user$ | async">
-          <a class="nav-link" routerLink="/athlete/dashboard">Dashboard</a>
+          <a class="nav-link" routerLink="/athlete">Dashboard</a>
         </li>
         <li class="d-none d-lg-block nav-item dropdown">
           <a
@@ -31,7 +31,7 @@
           >
             <fa-icon [icon]="faUser"></fa-icon>
           </a>
-          <ul class="dropdown-menu dropdown-menu-end nav-dropdown">
+          <ul class="dropdown-menu dropdown-menu-end nav-dropdown bs-primary">
             <div *ngIf="auth.user$ | async; then signOut; else signIn"></div>
           </ul>
         </li>
@@ -50,7 +50,7 @@
         <li class="nav-item" *ngIf="auth.user$ | async">
           <a
             class="nav-link"
-            routerLink="/athlete/dashboard"
+            routerLink="/athlete"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
             >Dashboard</a

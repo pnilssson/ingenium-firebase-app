@@ -24,6 +24,12 @@
   background-color: darkslategray;
 }
 
+.bs-primary {
+  border: 0;
+  -webkit-box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+  box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+}
+
 // BTN PLUM
 .btn-plum { 
   color: #ffffff !important; 

@@ -1,11 +1,11 @@
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">New workout</h4>
+    <h5 class="modal-title" id="modal-basic-title">New workout</h5>
     <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
   </div>
   <div class="modal-body">
-    <app-add-workout-form (onSave)="close()"></app-add-workout-form>
+    <app-workout-form (onSave)="close()" (onCancel)="close()"></app-workout-form>
   </div>
 </ng-template>
 
-<button type="button" class="btn btn-slate-light" (click)="open(content)">Add workout</button>
+<button type="button" class="btn btn-sm btn-slate-light" (click)="open(content)">Add workout</button>

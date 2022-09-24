@@ -1,2 +1,18 @@
+<div class="row" *ngIf="auth.user$ | async as user">
+  <div class="col-12 mt-3 d-flex align-items-center justify-content-between">
+    <h3 class="">{{ title }}</h3>
+    <div class="lead">{{ user.displayName }}</div>
+  </div>
+  <div class="col-12 p-0 mt-2">
+    <ul class="nav border-bottom">
+      <li class="nav-item">
+        <a class="nav-link text-reset link" routerLink="dashboard" routerLinkActive="active-link" (click)="setTitle('Dashboard')">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-reset link" routerLink="calendar" routerLinkActive="active-link" (click)="setTitle('Calendar')">Calendar</a>
+      </li>
+    </ul>
+  </div>
+</div>
 
 <router-outlet></router-outlet>

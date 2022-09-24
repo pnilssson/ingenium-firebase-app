@@ -1,4 +1,4 @@
-export interface Type {
+export interface WorkoutType {
   id?: string;
   name: string;
 }
