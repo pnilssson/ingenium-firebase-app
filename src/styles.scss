@@ -20,200 +20,111 @@
  text-decoration: none;
 }
 
-.bg-slate {
-  background-color: darkslategray;
+.bg-ing-dark {
+  background-color: #2B1C40 !important;
 }
+
+.bg-ing-light { 
+  background-color: #f6ecfd7a !important;
+} 
 
 .bs-primary {
   border: 0;
+  border-radius: 0.375rem;
   -webkit-box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
   box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
 }
 
-// BTN PLUM
-.btn-plum { 
-  color: #ffffff !important; 
-  background-color: #DDA0DD !important; 
-  border-color: #DDA0DD !important; 
+// BTN PURPLE PRIMARY
+.btn-ing-primary { 
+  color: #FFFFFF !important; 
+  background-color: #7C53A6 !important; 
+  border-color: #7C53A6 !important; 
 } 
  
-.btn-plum:hover, 
-.btn-plum:focus, 
-.btn-plum:active, 
-.btn-plum.active, 
-.open .dropdown-toggle.btn-plum { 
-  color: #ffffff !important; 
-  background-color: #CF93CF !important; 
-  border-color: #DDA0DD !important; 
+.btn-ing-primary:hover, 
+.btn-ing-primary:focus, 
+.btn-ing-primary:active, 
+.btn-ing-primary.active, 
+.open .dropdown-toggle.btn-ing-primary { 
+  color: #FFFFFF !important; 
+  background-color: #654287 !important; 
+  border-color: #7C53A6 !important; 
 } 
  
-.btn-plum:active, 
-.btn-plum.active, 
-.open .dropdown-toggle.btn-plum { 
+.btn-ing-primary:active, 
+.btn-ing-primary.active, 
+.open .dropdown-toggle.btn-ing-primary { 
   background-image: none !important; 
 } 
  
-.btn-plum.disabled, 
-.btn-plum[disabled], 
-fieldset[disabled] .btn-plum, 
-.btn-plum.disabled:hover, 
-.btn-plum[disabled]:hover, 
-fieldset[disabled] .btn-plum:hover, 
-.btn-plum.disabled:focus, 
-.btn-plum[disabled]:focus, 
-fieldset[disabled] .btn-plum:focus, 
-.btn-plum.disabled:active, 
-.btn-plum[disabled]:active, 
-fieldset[disabled] .btn-plum:active, 
-.btn-plum.disabled.active, 
-.btn-plum[disabled].active, 
-fieldset[disabled] .btn-plum.active { 
-  background-color: #DDA0DD !important; 
-  border-color: #DDA0DD !important; 
+.btn-ing-primary.disabled, 
+.btn-ing-primary[disabled], 
+fieldset[disabled] .btn-ing-primary, 
+.btn-ing-primary.disabled:hover, 
+.btn-ing-primary[disabled]:hover, 
+fieldset[disabled] .btn-ing-primary:hover, 
+.btn-ing-primary.disabled:focus, 
+.btn-ing-primary[disabled]:focus, 
+fieldset[disabled] .btn-ing-primary:focus, 
+.btn-ing-primary.disabled:active, 
+.btn-ing-primary[disabled]:active, 
+fieldset[disabled] .btn-ing-primary:active, 
+.btn-ing-primary.disabled.active, 
+.btn-ing-primary[disabled].active, 
+fieldset[disabled] .btn-ing-primary.active { 
+  background-color: #7C53A6 !important; 
+  border-color: #7C53A6 !important; 
 } 
  
-.btn-plum .badge { 
-  color: #DDA0DD !important; 
-  background-color: #ffffff !important; 
-}
-
-// BTN SKY
-.btn-sky { 
-  color: #FFFFFF !important; 
-  background-color: #87CEFA !important; 
-  border-color: #87CEFA !important; 
-} 
- 
-.btn-sky:hover, 
-.btn-sky:focus, 
-.btn-sky:active, 
-.btn-sky.active, 
-.open .dropdown-toggle.btn-sky { 
-  color: #FFFFFF !important; 
-  background-color: #6EC7FF !important; 
-  border-color: #87CEFA !important; 
-} 
- 
-.btn-sky:active, 
-.btn-sky.active, 
-.open .dropdown-toggle.btn-sky { 
-  background-image: none !important; 
-} 
- 
-.btn-sky.disabled, 
-.btn-sky[disabled], 
-fieldset[disabled] .btn-sky, 
-.btn-sky.disabled:hover, 
-.btn-sky[disabled]:hover, 
-fieldset[disabled] .btn-sky:hover, 
-.btn-sky.disabled:focus, 
-.btn-sky[disabled]:focus, 
-fieldset[disabled] .btn-sky:focus, 
-.btn-sky.disabled:active, 
-.btn-sky[disabled]:active, 
-fieldset[disabled] .btn-sky:active, 
-.btn-sky.disabled.active, 
-.btn-sky[disabled].active, 
-fieldset[disabled] .btn-sky.active { 
-  background-color: #87CEFA !important; 
-  border-color: #87CEFA !important; 
-} 
- 
-.btn-sky .badge { 
-  color: #87CEFA !important; 
+.btn-ing-primary .badge { 
+  color: #7C53A6 !important; 
   background-color: #FFFFFF !important; 
 }
 
-// BTN SLATE
-.btn-slate { 
-  color: #ffffff !important; 
-  background-color: #3E6969 !important; 
-  border-color: #3E6969 !important; 
+// PURPLE ING SECONDARY
+.btn-ing-secondary { 
+  color: #000000 !important; 
+  background-color: #C2E0F2 !important; 
+  border-color: #C2E0F2 !important; 
 } 
  
-.btn-slate:hover, 
-.btn-slate:focus, 
-.btn-slate:active, 
-.btn-slate.active, 
-.open .dropdown-toggle.btn-slate { 
-  color: #ffffff !important; 
-  background-color: #2F4F4F !important; 
-  border-color: #3E6969 !important; 
+.btn-ing-secondary:hover, 
+.btn-ing-secondary:focus, 
+.btn-ing-secondary:active, 
+.btn-ing-secondary.active, 
+.open .dropdown-toggle.btn-ing-secondary { 
+  color: #000000 !important; 
+  background-color: #ACD0E6 !important; 
+  border-color: #C2E0F2 !important; 
 } 
  
-.btn-slate:active, 
-.btn-slate.active, 
-.open .dropdown-toggle.btn-slate { 
+.btn-ing-secondary:active, 
+.btn-ing-secondary.active, 
+.open .dropdown-toggle.btn-ing-secondary { 
   background-image: none !important; 
 } 
  
-.btn-slate.disabled, 
-.btn-slate[disabled], 
-fieldset[disabled] .btn-slate, 
-.btn-slate.disabled:hover, 
-.btn-slate[disabled]:hover, 
-fieldset[disabled] .btn-slate:hover, 
-.btn-slate.disabled:focus, 
-.btn-slate[disabled]:focus, 
-fieldset[disabled] .btn-slate:focus, 
-.btn-slate.disabled:active, 
-.btn-slate[disabled]:active, 
-fieldset[disabled] .btn-slate:active, 
-.btn-slate.disabled.active, 
-.btn-slate[disabled].active, 
-fieldset[disabled] .btn-slate.active { 
-  background-color: #3E6969 !important; 
-  border-color: #3E6969 !important; 
+.btn-ing-secondary.disabled, 
+.btn-ing-secondary[disabled], 
+fieldset[disabled] .btn-ing-secondary, 
+.btn-ing-secondary.disabled:hover, 
+.btn-ing-secondary[disabled]:hover, 
+fieldset[disabled] .btn-ing-secondary:hover, 
+.btn-ing-secondary.disabled:focus, 
+.btn-ing-secondary[disabled]:focus, 
+fieldset[disabled] .btn-ing-secondary:focus, 
+.btn-ing-secondary.disabled:active, 
+.btn-ing-secondary[disabled]:active, 
+fieldset[disabled] .btn-ing-secondary:active, 
+.btn-ing-secondary.disabled.active, 
+.btn-ing-secondary[disabled].active, 
+fieldset[disabled] .btn-ing-secondary.active { 
+  background-color: #C2E0F2 !important; 
+  border-color: #C2E0F2 !important; 
 } 
  
-.btn-slate .badge { 
-  color: #3E6969 !important; 
-  background-color: #ffffff !important; 
-}
-
-// BTN SLATE LIGHT
-.btn-slate-light { 
-  color: #ffffff !important; 
-  background-color: #5C9999 !important; 
-  border-color: #5C9999 !important; 
-} 
- 
-.btn-slate-light:hover, 
-.btn-slate-light:focus, 
-.btn-slate-light:active, 
-.btn-slate-light.active, 
-.open .dropdown-toggle.btn-slate-light { 
-  color: #ffffff !important; 
-  background-color: #4A7D7D !important; 
-  border-color: #5C9999 !important; 
-} 
- 
-.btn-slate-light:active, 
-.btn-slate-light.active, 
-.open .dropdown-toggle.btn-slate-light { 
-  background-image: none !important; 
-} 
- 
-.btn-slate-light.disabled, 
-.btn-slate-light[disabled], 
-fieldset[disabled] .btn-slate-light, 
-.btn-slate-light.disabled:hover, 
-.btn-slate-light[disabled]:hover, 
-fieldset[disabled] .btn-slate-light:hover, 
-.btn-slate-light.disabled:focus, 
-.btn-slate-light[disabled]:focus, 
-fieldset[disabled] .btn-slate-light:focus, 
-.btn-slate-light.disabled:active, 
-.btn-slate-light[disabled]:active, 
-fieldset[disabled] .btn-slate-light:active, 
-.btn-slate-light.disabled.active, 
-.btn-slate-light[disabled].active, 
-fieldset[disabled] .btn-slate-light.active { 
-  background-color: #5C9999 !important; 
-  border-color: #5C9999 !important; 
-} 
- 
-.btn-slate-light .badge { 
-  color: #5C9999 !important; 
-  background-color: #ffffff !important; 
+.btn-ing-secondary .badge { 
+  color: #C2E0F2 !important; 
+  background-color: #000000 !important; 
 }

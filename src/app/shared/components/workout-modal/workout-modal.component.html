@@ -24,14 +24,13 @@
   *ngIf="edit"
   class="pe-2"
   [icon]="faPen"
-  [styles]="{ color: '#2F4F4F' }"
   (click)="open(content)"
 ></fa-icon>
 
 <button
   *ngIf="!edit"
   type="button"
-  class="btn btn-sm btn-slate-light"
+  class="btn btn-sm btn-ing-primary"
   (click)="open(content)"
 >
   Add workout

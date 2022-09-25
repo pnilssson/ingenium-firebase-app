@@ -13,8 +13,4 @@ export class AthleteComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  setTitle(title: string) {
-    this.title = title;
-  }
 }
