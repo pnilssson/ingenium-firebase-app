@@ -10,6 +10,7 @@
 .app-container {
   width: 100vw;
   height: 100vh;
+  background-color: #faf3ff56;
 }
 
 .app-content-container {
@@ -25,14 +26,24 @@
 }
 
 .bg-ing-light { 
-  background-color: #f6ecfd7a !important;
+  background-color: #faf4ffb6 !important;
 } 
 
 .bs-primary {
   border: 0;
   border-radius: 0.375rem;
-  -webkit-box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
-  box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+  -webkit-box-shadow: 0 1px 2px #3c40434d, 0 1px 3px 1px #3c404326;
+  box-shadow: 0 1px 2px #3c40434d, 0 1px 3px 1px #3c404326;
+}
+
+// NGB Datepicker
+.ngb-dp-weekday {
+  color: #7C53A6 !important;
+  font-style: normal !important;
+}
+
+.ngb-dp-arrow-btn {
+  color: #7C53A6 !important;
 }
 
 // BTN PURPLE PRIMARY

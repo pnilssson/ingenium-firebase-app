@@ -1,12 +1,12 @@
-<div class="row">
-  <form [formGroup]="workoutForm" (submit)="save()">
-    <div class="col-12 mb-3">
+<form [formGroup]="workoutForm" (submit)="save()">
+  <div class="row align-items-center mb-3">
+    <div class="col-6">
       <div class="input-group">
         <span for="date" class="input-group-text">Date</span>
         <input
           role="button"
           class="form-control"
-          [weekdays]="false"
+          [weekdays]="true"
           outsideDays="collapsed"
           id="date"
           readonly
@@ -14,28 +14,49 @@
           formControlName="date"
           ngbDatepicker
           #d="ngbDatepicker"
+          (dateSelect)="onDateSelect($event)"
           (click)="d.toggle()"
         />
       </div>
     </div>
-    <div class="col-12 mb-3">
-      <select
-        class="form-select"
-        formControlName="type"
-        [ngClass]="{ 'is-invalid': submitted && f['type'].errors }"
-      >
-        <option
-          *ngFor="let workoutType of workoutTypes"
-          [ngValue]="workoutType"
-        >
-          {{ workoutType.name }}
-        </option>
-      </select>
-      <div *ngIf="submitted && f['type'].errors" class="invalid-feedback">
-        <div *ngIf="f['type'].errors?.['required']">Type is required</div>
+    <div class="col-6">
+      <div class="form-check form-switch">
+        <input
+          class="form-check-input"
+          formControlName="completed"
+          type="checkbox"
+          role="switch"
+          id="completed"
+        />
+        <label class="form-check-label" for="completed">Completed</label>
       </div>
     </div>
-    <div class="col-12 mb-3">
+  </div>
+  <div class="row mb-3">
+    <div class="col-12">
+      <div class="input-group">
+        <span for="type" class="input-group-text">Type</span>
+        <select
+          id="type"
+          class="form-select"
+          formControlName="type"
+          [ngClass]="{ 'is-invalid': submitted && f['type'].errors }"
+        >
+          <option
+            *ngFor="let workoutType of workoutTypes"
+            [ngValue]="workoutType"
+          >
+            {{ workoutType.name }}
+          </option>
+        </select>
+        <div *ngIf="submitted && f['type'].errors" class="invalid-feedback">
+          <div *ngIf="f['type'].errors?.['required']">Type is required</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-12">
       <div class="form-floating">
         <input
           type="number"
@@ -51,7 +72,9 @@
         </div>
       </div>
     </div>
-    <div class="col-12 mb-3">
+  </div>
+  <div class="row mb-3">
+    <div class="col-12">
       <div class="form-floating">
         <textarea
           type="text"
@@ -63,6 +86,8 @@
         <label for="description">Description</label>
       </div>
     </div>
+  </div>
+  <div class="row">
     <div class="col-12 d-flex justify-content-end">
       <button
         type="button"
@@ -73,5 +98,5 @@
       </button>
       <button type="submit" class="btn btn-ing-primary ms-2">Save</button>
     </div>
-  </form>
-</div>
+  </div>
+</form>

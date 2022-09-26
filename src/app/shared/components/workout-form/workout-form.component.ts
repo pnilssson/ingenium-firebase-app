@@ -5,7 +5,11 @@ import {
   Validators,
   AbstractControl,
 } from '@angular/forms';
-import { NgbCalendar, NgbDateParserFormatter, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbCalendar,
+  NgbDateParserFormatter,
+  NgbDateStruct,
+} from '@ng-bootstrap/ng-bootstrap';
 import { Timestamp } from 'firebase/firestore';
 import { Observable, Subject, takeUntil, tap } from 'rxjs';
 import { ApiService } from 'src/app/core/services/api.service';
@@ -31,6 +35,8 @@ export class WorkoutFormComponent implements OnInit {
   submitted = false;
   workoutForm: FormGroup;
 
+  todaysDate = this.calendar.getToday();
+
   model!: NgbDateStruct;
 
   destroy$: Subject<boolean> = new Subject<boolean>();
@@ -40,13 +46,14 @@ export class WorkoutFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private calendar: NgbCalendar,
     private ngbDateParserFormatter: NgbDateParserFormatter,
-    public auth: AuthService,
+    public auth: AuthService
   ) {
     this.workoutForm = this.formBuilder.group({
       id: [null],
       time: [null, Validators.required],
       description: [''],
-      date: [this.calendar.getToday(), Validators.required],
+      completed: [true],
+      date: [this.todaysDate, Validators.required],
       type: [null, Validators.required],
     });
   }
@@ -67,10 +74,23 @@ export class WorkoutFormComponent implements OnInit {
   }
 
   getWorkoutTypes() {
-    this.apiService.getTypes().pipe(takeUntil(this.destroy$)).subscribe((res) => {
-      this.workoutTypes = res;
-      this.workoutForm.controls?.['type'].patchValue(this.workoutTypes.find(a => a.name == (this.workout ? this.workout.type.name : 'Other')));
-    });
+    this.apiService
+      .getTypes()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((res) => {
+        this.workoutTypes = res;
+        this.workoutForm.controls?.['type'].patchValue(
+          this.workoutTypes.find(
+            (a) => a.name == (this.workout ? this.workout.type.name : 'Other')
+          )
+        );
+      });
+  }
+
+  onDateSelect(e: any) {
+    this.todaysDate.before(e)
+      ? this.workoutForm.controls?.['completed'].patchValue(false)
+      : this.workoutForm.controls?.['completed'].patchValue(true);
   }
 
   updateForm() {
@@ -93,14 +113,14 @@ export class WorkoutFormComponent implements OnInit {
 
   private updateWorkout() {
     this.apiService
-    .updateWorkout(this.userId!, this.workout?.uid!, this.getWorkout())
-    .then(() => {
-      this.successToast();
-    })
-    .catch((err: any) => {
-      console.log(err)
-      this.errorToast();
-    });
+      .updateWorkout(this.userId!, this.workout?.uid!, this.getWorkout())
+      .then(() => {
+        this.successToast();
+      })
+      .catch((err: any) => {
+        console.log(err);
+        this.errorToast();
+      });
   }
 
   private addWorkout() {
@@ -115,7 +135,7 @@ export class WorkoutFormComponent implements OnInit {
   }
 
   private getWorkout(): Workout {
-    const { time, description, date, type, id } = this.workoutForm.value;
+    const { time, description, date, type, completed } = this.workoutForm.value;
     return {
       date: {
         year: date.year,
@@ -128,12 +148,14 @@ export class WorkoutFormComponent implements OnInit {
       },
       time,
       description,
-      completedDate: new Date(this.ngbDateParserFormatter.format(this.workoutForm.value.date)).toUTCString(),
-      created: new Date(Date.now()).toUTCString() 
+      completed,
+      workoutDate: new Date(
+        this.ngbDateParserFormatter.format(this.workoutForm.value.date)
+      ).toUTCString(),
+      created: new Date(Date.now()).toUTCString(),
     };
   }
 
-  
   private successToast() {
     this.toastService.showToast({
       type: 'success',
@@ -147,7 +169,9 @@ export class WorkoutFormComponent implements OnInit {
   private errorToast() {
     this.toastService.showToast({
       type: 'warning',
-      msg: `An error occured when ${this.workout ? 'updating' : 'adding'} the workout.`,
+      msg: `An error occured when ${
+        this.workout ? 'updating' : 'adding'
+      } the workout.`,
       hide: false,
     });
   }

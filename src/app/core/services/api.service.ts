@@ -33,7 +33,7 @@ export class ApiService {
     return this.afs
       .doc(`workouts/${userId}`)
       .collection<Workout>('sessions', (ref) =>
-        ref.orderBy('completedDate', 'desc').limit(limit)
+        ref.orderBy('workoutDate', 'desc').limit(limit)
       )
       .valueChanges({ idField: 'uid' });
   }

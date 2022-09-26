@@ -7,6 +7,7 @@ export interface Workout {
   type: WorkoutType;
   time: number;
   description?: string;
-  completedDate: string;
+  completed: boolean;
+  workoutDate: string;
   created: string;
 }
