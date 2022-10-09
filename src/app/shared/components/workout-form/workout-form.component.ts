@@ -52,8 +52,8 @@ export class WorkoutFormComponent implements OnInit {
   ) {
     this.workoutForm = this.formBuilder.group({
       id: [null],
-      time: [null, Validators.required],
-      description: [null],
+      time: [null, [Validators.required, Validators.maxLength(99999)]],
+      description: [null, Validators.maxLength(2500)],
       completed: [true],
       date: [this.todaysDate, Validators.required],
       type: [null, Validators.required],

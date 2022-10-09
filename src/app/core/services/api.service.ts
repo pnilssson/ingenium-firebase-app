@@ -45,7 +45,10 @@ export class ApiService {
       .collection('workouts')
       .doc(userId)
       .collection<Workout>('sessions', (ref) =>
-        ref.orderBy('workoutDate', 'desc').limit(limit)
+        ref
+          .where('completed', '==', true)
+          .orderBy('workoutDate', 'desc')
+          .limit(limit)
       )
       .valueChanges({ idField: 'uid' });
   }

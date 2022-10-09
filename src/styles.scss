@@ -1,8 +1,8 @@
-@import "~bootstrap/dist/css/bootstrap.css";
-@import "bootstrap/scss/functions";
-@import "bootstrap/scss/variables";
-@import "mixins.scss";
-@import "variables.scss";
+@import '~bootstrap/dist/css/bootstrap.css';
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'mixins.scss';
+@import 'variables.scss';
 
 .small-center-container {
   display: flex;
@@ -22,7 +22,7 @@
 }
 
 .link {
- text-decoration: none;
+  text-decoration: none;
 }
 
 .bg-ing-dark {
@@ -33,44 +33,16 @@
   background-color: $ingenium-primary;
 }
 
-.bg-ing-light { 
+.bg-ing-light {
   background-color: $ingenium-light;
-} 
+}
+
+.fs-small {
+  font-size: 0.8em;
+}
 
 .bs-primary {
   @include bs-primary;
-}
-
-.strength {
-  background-color: $orange-100;
-}
-
-.strength-icon {
-  color: $orange-300;
-}
-
-.conditioning {
-  background-color: $blue-100;
-}
-
-.conditioning-icon {
-  color: $blue-300;
-}
-
-.sport {
-  background-color: $green-100;
-}
-
-.sport-icon {
-  color: $green-300;
-}
-
-.other {
-  background-color: $red-100;
-}
-
-.other-icon {
-  color: $red-300;
 }
 
 // NGB Datepicker
@@ -83,96 +55,129 @@
   color: $ingenium-primary !important;
 }
 
+// Workout icons and backgrounds
+.strength {
+  background-color: $orange-100;
+}
+
+.strength-icon {
+  color: $orange-500;
+}
+
+.conditioning {
+  background-color: $blue-100;
+}
+
+.conditioning-icon {
+  color: $blue-500;
+}
+
+.sport {
+  background-color: $green-100;
+}
+
+.sport-icon {
+  color: $green-500;
+}
+
+.other {
+  background-color: $red-100;
+}
+
+.other-icon {
+  color: $red-500;
+}
+
 // BTN PURPLE PRIMARY
-.btn-ing-primary { 
-  color: #FFFFFF !important; 
-  background-color: #7C53A6 !important; 
-  border-color: #7C53A6 !important; 
-} 
- 
-.btn-ing-primary:hover, 
-.btn-ing-primary:focus, 
-.btn-ing-primary:active, 
-.btn-ing-primary.active, 
-.open .dropdown-toggle.btn-ing-primary { 
-  color: #FFFFFF !important; 
-  background-color: #654287 !important; 
-  border-color: #7C53A6 !important; 
-} 
- 
-.btn-ing-primary:active, 
-.btn-ing-primary.active, 
-.open .dropdown-toggle.btn-ing-primary { 
-  background-image: none !important; 
-} 
- 
-.btn-ing-primary.disabled, 
-.btn-ing-primary[disabled], 
-fieldset[disabled] .btn-ing-primary, 
-.btn-ing-primary.disabled:hover, 
-.btn-ing-primary[disabled]:hover, 
-fieldset[disabled] .btn-ing-primary:hover, 
-.btn-ing-primary.disabled:focus, 
-.btn-ing-primary[disabled]:focus, 
-fieldset[disabled] .btn-ing-primary:focus, 
-.btn-ing-primary.disabled:active, 
-.btn-ing-primary[disabled]:active, 
-fieldset[disabled] .btn-ing-primary:active, 
-.btn-ing-primary.disabled.active, 
-.btn-ing-primary[disabled].active, 
-fieldset[disabled] .btn-ing-primary.active { 
-  background-color: #7C53A6 !important; 
-  border-color: #7C53A6 !important; 
-} 
- 
-.btn-ing-primary .badge { 
-  color: #7C53A6 !important; 
-  background-color: #FFFFFF !important; 
+.btn-ing-primary {
+  color: #ffffff !important;
+  background-color: #7c53a6 !important;
+  border-color: #7c53a6 !important;
+}
+
+.btn-ing-primary:hover,
+.btn-ing-primary:focus,
+.btn-ing-primary:active,
+.btn-ing-primary.active,
+.open .dropdown-toggle.btn-ing-primary {
+  color: #ffffff !important;
+  background-color: #654287 !important;
+  border-color: #7c53a6 !important;
+}
+
+.btn-ing-primary:active,
+.btn-ing-primary.active,
+.open .dropdown-toggle.btn-ing-primary {
+  background-image: none !important;
+}
+
+.btn-ing-primary.disabled,
+.btn-ing-primary[disabled],
+fieldset[disabled] .btn-ing-primary,
+.btn-ing-primary.disabled:hover,
+.btn-ing-primary[disabled]:hover,
+fieldset[disabled] .btn-ing-primary:hover,
+.btn-ing-primary.disabled:focus,
+.btn-ing-primary[disabled]:focus,
+fieldset[disabled] .btn-ing-primary:focus,
+.btn-ing-primary.disabled:active,
+.btn-ing-primary[disabled]:active,
+fieldset[disabled] .btn-ing-primary:active,
+.btn-ing-primary.disabled.active,
+.btn-ing-primary[disabled].active,
+fieldset[disabled] .btn-ing-primary.active {
+  background-color: #7c53a6 !important;
+  border-color: #7c53a6 !important;
+}
+
+.btn-ing-primary .badge {
+  color: #7c53a6 !important;
+  background-color: #ffffff !important;
 }
 
 // PURPLE ING SECONDARY
-.btn-ing-secondary { 
-  color: #000000 !important; 
-  background-color: #C2E0F2 !important; 
-  border-color: #C2E0F2 !important; 
-} 
- 
-.btn-ing-secondary:hover, 
-.btn-ing-secondary:focus, 
-.btn-ing-secondary:active, 
-.btn-ing-secondary.active, 
-.open .dropdown-toggle.btn-ing-secondary { 
-  color: #000000 !important; 
-  background-color: #ACD0E6 !important; 
-  border-color: #C2E0F2 !important; 
-} 
- 
-.btn-ing-secondary:active, 
-.btn-ing-secondary.active, 
-.open .dropdown-toggle.btn-ing-secondary { 
-  background-image: none !important; 
-} 
- 
-.btn-ing-secondary.disabled, 
-.btn-ing-secondary[disabled], 
-fieldset[disabled] .btn-ing-secondary, 
-.btn-ing-secondary.disabled:hover, 
-.btn-ing-secondary[disabled]:hover, 
-fieldset[disabled] .btn-ing-secondary:hover, 
-.btn-ing-secondary.disabled:focus, 
-.btn-ing-secondary[disabled]:focus, 
-fieldset[disabled] .btn-ing-secondary:focus, 
-.btn-ing-secondary.disabled:active, 
-.btn-ing-secondary[disabled]:active, 
-fieldset[disabled] .btn-ing-secondary:active, 
-.btn-ing-secondary.disabled.active, 
-.btn-ing-secondary[disabled].active, 
-fieldset[disabled] .btn-ing-secondary.active { 
-  background-color: #C2E0F2 !important; 
-  border-color: #C2E0F2 !important; 
-} 
- 
-.btn-ing-secondary .badge { 
-  color: #C2E0F2 !important; 
-  background-color: #000000 !important; 
+.btn-ing-secondary {
+  color: #000000 !important;
+  background-color: #c2e0f2 !important;
+  border-color: #c2e0f2 !important;
+}
+
+.btn-ing-secondary:hover,
+.btn-ing-secondary:focus,
+.btn-ing-secondary:active,
+.btn-ing-secondary.active,
+.open .dropdown-toggle.btn-ing-secondary {
+  color: #000000 !important;
+  background-color: #acd0e6 !important;
+  border-color: #c2e0f2 !important;
+}
+
+.btn-ing-secondary:active,
+.btn-ing-secondary.active,
+.open .dropdown-toggle.btn-ing-secondary {
+  background-image: none !important;
+}
+
+.btn-ing-secondary.disabled,
+.btn-ing-secondary[disabled],
+fieldset[disabled] .btn-ing-secondary,
+.btn-ing-secondary.disabled:hover,
+.btn-ing-secondary[disabled]:hover,
+fieldset[disabled] .btn-ing-secondary:hover,
+.btn-ing-secondary.disabled:focus,
+.btn-ing-secondary[disabled]:focus,
+fieldset[disabled] .btn-ing-secondary:focus,
+.btn-ing-secondary.disabled:active,
+.btn-ing-secondary[disabled]:active,
+fieldset[disabled] .btn-ing-secondary:active,
+.btn-ing-secondary.disabled.active,
+.btn-ing-secondary[disabled].active,
+fieldset[disabled] .btn-ing-secondary.active {
+  background-color: #c2e0f2 !important;
+  border-color: #c2e0f2 !important;
+}
+
+.btn-ing-secondary .badge {
+  color: #c2e0f2 !important;
+  background-color: #000000 !important;
 }
