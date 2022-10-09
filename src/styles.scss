@@ -2,6 +2,7 @@
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
 @import "mixins.scss";
+@import "variables.scss";
 
 .small-center-container {
   display: flex;
@@ -13,7 +14,7 @@
 .app-container {
   width: 100vw;
   height: 100vh;
-  background-color: #F2F2F2;
+  background-color: $ingenium-white;
 }
 
 .app-content-container {
@@ -25,15 +26,15 @@
 }
 
 .bg-ing-dark {
-  background-color: #2B1C40 !important;
+  background-color: $ingenium-dark;
 }
 
-.bg-ing-medium {
-  background-color: #7C53A6 !important;
+.bg-ing-primary {
+  background-color: $ingenium-primary;
 }
 
 .bg-ing-light { 
-  background-color: #faf4ffb6 !important;
+  background-color: $ingenium-light;
 } 
 
 .bs-primary {
@@ -74,12 +75,12 @@
 
 // NGB Datepicker
 .ngb-dp-weekday {
-  color: #7C53A6 !important;
+  color: $ingenium-primary !important;
   font-style: normal !important;
 }
 
 .ngb-dp-arrow-btn {
-  color: #7C53A6 !important;
+  color: $ingenium-primary !important;
 }
 
 // BTN PURPLE PRIMARY
