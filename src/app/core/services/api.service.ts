@@ -16,22 +16,34 @@ export class ApiService {
       .valueChanges({ idField: 'id' });
   }
 
+  getSubTypes(typeId: string): Observable<WorkoutType[]> {
+    return this.afs
+      .collection('types')
+      .doc(typeId)
+      .collection<WorkoutType>('subtypes')
+      .valueChanges({ idField: 'id' });
+  }
+
   addWorkout(userId: string, workout: Workout): any {
     return this.afs
-      .doc(`workouts/${userId}`)
+      .collection('workouts')
+      .doc(userId)
       .collection('sessions')
       .add(workout);
   }
 
   updateWorkout(userId: string, workoutId: string, workout: Workout): any {
     return this.afs
-      .doc(`workouts/${userId}/sessions/${workoutId}`)
+      .doc(`workouts/${userId}`)
+      .collection<Workout>('sessions')
+      .doc(workoutId)
       .update(workout);
   }
 
   getWorkoutsWithLimit(userId: string, limit: number): Observable<Workout[]> {
     return this.afs
-      .doc(`workouts/${userId}`)
+      .collection('workouts')
+      .doc(userId)
       .collection<Workout>('sessions', (ref) =>
         ref.orderBy('workoutDate', 'desc').limit(limit)
       )

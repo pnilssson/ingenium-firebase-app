@@ -1,13 +1,13 @@
-<div class="card bs-primary bg-ing-light" *ngIf="workout">
+<div role="button" class="card bs-primary bg-ing-light" *ngIf="workout" (click)="openModal()">
   <div class="card-body">
     <div class="d-flex align-items-center justify-content-between mb-3">
       <h6 class="mb-0">
         <fa-icon *ngIf="icon" class="pe-2" [icon]="icon"></fa-icon
         >{{ workout.type.name }}
       </h6>
-      <app-workout-modal [workout]="workout" [edit]="true"></app-workout-modal>
+      <fa-icon class="d-lg-none" [icon]="faPen"></fa-icon>
     </div>
-    <h6 class="card-title">{{ workout.workoutDate | date }}</h6>
+    <h6 class="card-title">{{ workout.workoutDate.seconds * 1000 | date }}</h6>
     <h6 class="card-subtitle mb-2 text-muted">{{ workout.time }} minutes</h6>
     <p
       class="card-text card-description"

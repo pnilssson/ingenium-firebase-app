@@ -1,7 +1,9 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faDumbbell, faHeart, faPersonRunning, faStopwatch } from '@fortawesome/free-solid-svg-icons';
+import { faDumbbell, faHeart, faPersonRunning, faStopwatch, faPen } from '@fortawesome/free-solid-svg-icons';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Workout } from '../../models/workout';
+import { WorkoutModalComponent } from '../workout-modal/workout-modal.component';
 
 @Component({
   selector: 'app-workout-small',
@@ -13,10 +15,19 @@ export class WorkoutSmallComponent implements OnInit {
   @Input() showDescription: boolean = false;
 
   icon: IconProp | undefined;
-  constructor() {}
+  faPen = faPen;
+  constructor(private modalService: NgbModal) {}
 
   ngOnInit() {
     this.setIcon();
+  }
+
+  openModal() {
+    const modalRef = this.modalService.open(WorkoutModalComponent, {
+      size: 'lg',
+    });
+
+    modalRef.componentInstance.workout = this.workout;
   }
 
   setIcon() {

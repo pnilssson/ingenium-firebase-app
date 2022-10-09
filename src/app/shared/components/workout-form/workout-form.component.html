@@ -7,6 +7,7 @@
           role="button"
           class="form-control"
           [weekdays]="true"
+          [showWeekNumbers]="true"
           outsideDays="collapsed"
           id="date"
           readonly
@@ -37,9 +38,11 @@
       <div class="input-group">
         <span for="type" class="input-group-text">Type</span>
         <select
+          #types
           id="type"
           class="form-select"
           formControlName="type"
+          (change)="getSubTypes()"
           [ngClass]="{ 'is-invalid': submitted && f['type'].errors }"
         >
           <option
@@ -52,6 +55,25 @@
         <div *ngIf="submitted && f['type'].errors" class="invalid-feedback">
           <div *ngIf="f['type'].errors?.['required']">Type is required</div>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-3" *ngIf="subTypes.length > 0">
+    <div class="col-12">
+      <div class="input-group">
+        <span for="subType" class="input-group-text">Sub Type</span>
+        <select
+          id="subType"
+          class="form-select"
+          formControlName="subType"
+        >
+          <option
+            *ngFor="let subType of subTypes"
+            [ngValue]="subType"
+          >
+            {{ subType.name }}
+          </option>
+        </select>
       </div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Workout } from '../../models/workout';
 
 @Component({
@@ -10,25 +10,12 @@ import { Workout } from '../../models/workout';
 })
 export class WorkoutModalComponent implements OnInit {
   @Input() workout: Workout | undefined;
-  @Input() edit: boolean = false;
 
-  faPen = faPen;
-  addWorkoutModalReference: any;
-  constructor(private modalService: NgbModal) {}
+  constructor(public activeModal: NgbActiveModal) {}
 
   ngOnInit() {}
 
-  open(content: any) {
-    this.addWorkoutModalReference = this.modalService.open(content, {
-      size: 'lg',
-    });
-    this.addWorkoutModalReference.result.then(
-      () => {},
-      () => {}
-    );
-  }
-
   close() {
-    this.addWorkoutModalReference.close();
+    this.activeModal.close();
   }
 }

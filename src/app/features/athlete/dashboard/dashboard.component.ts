@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Subject, takeUntil, tap } from 'rxjs';
 import { ApiService } from 'src/app/core/services/api.service';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { ToastService } from 'src/app/core/services/toast.service';
 import { Workout } from 'src/app/shared/models/workout';
 
 @Component({
@@ -18,7 +17,6 @@ export class DashboardComponent implements OnInit {
   destroy$: Subject<boolean> = new Subject<boolean>();
   constructor(
     public auth: AuthService,
-    private toastService: ToastService,
     private apiService: ApiService,
   ) {
   }

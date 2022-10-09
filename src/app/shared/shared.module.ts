@@ -7,12 +7,14 @@ import { WorkoutFormComponent } from './components/workout-form/workout-form.com
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { WorkoutSmallComponent } from './components/workout-small/workout-small.component';
 import { WorkoutModalComponent } from './components/workout-modal/workout-modal.component';
+import { AddWorkoutButtonComponent } from './components/add-workout-button/add-workout-button.component';
 
 @NgModule({
   declarations: [
     WorkoutFormComponent,
     WorkoutSmallComponent,
     WorkoutModalComponent,
+    AddWorkoutButtonComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +32,8 @@ import { WorkoutModalComponent } from './components/workout-modal/workout-modal.
     FontAwesomeModule,
     WorkoutFormComponent,
     WorkoutSmallComponent,
-    WorkoutModalComponent
+    WorkoutModalComponent,
+    AddWorkoutButtonComponent
   ],
 })
 export class SharedModule {}

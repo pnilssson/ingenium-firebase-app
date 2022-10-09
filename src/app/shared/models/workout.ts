@@ -1,13 +1,19 @@
 import { NgbDateStruct } from "@ng-bootstrap/ng-bootstrap";
+import { Timestamp } from "firebase/firestore";
 import { WorkoutType } from "./workoutType";
 
 export interface Workout {
   uid?: string;
-  date: NgbDateStruct;
+  date: NgbDateStructWithWeek;
   type: WorkoutType;
+  subType: WorkoutType | null;
   time: number;
   description?: string;
   completed: boolean;
-  workoutDate: string;
-  created: string;
+  workoutDate: Timestamp;
+  created: Timestamp;
+}
+
+export interface NgbDateStructWithWeek extends NgbDateStruct {
+  week: number;
 }

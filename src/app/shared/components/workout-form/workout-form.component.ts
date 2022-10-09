@@ -30,6 +30,7 @@ export class WorkoutFormComponent implements OnInit {
   @Output() onCancel = new EventEmitter();
 
   workoutTypes: WorkoutType[] = [];
+  subTypes: WorkoutType[] = [];
   userId: string | undefined;
 
   submitted = false;
@@ -51,10 +52,11 @@ export class WorkoutFormComponent implements OnInit {
     this.workoutForm = this.formBuilder.group({
       id: [null],
       time: [null, Validators.required],
-      description: [''],
+      description: [null],
       completed: [true],
       date: [this.todaysDate, Validators.required],
       type: [null, Validators.required],
+      subType: [null],
     });
   }
 
@@ -84,7 +86,17 @@ export class WorkoutFormComponent implements OnInit {
             (a) => a.name == (this.workout ? this.workout.type.name : 'Other')
           )
         );
+        this.getSubTypes();
       });
+  }
+
+  getSubTypes() {
+    this.apiService
+    .getSubTypes(this.f['type'].value.id)
+    .pipe(takeUntil(this.destroy$))
+    .subscribe((res) => {
+      this.subTypes = res;
+    }); 
   }
 
   onDateSelect(e: any) {
@@ -135,25 +147,40 @@ export class WorkoutFormComponent implements OnInit {
   }
 
   private getWorkout(): Workout {
-    const { time, description, date, type, completed } = this.workoutForm.value;
+    const { time, description, date, type, subType, completed } = this.workoutForm.value;
     return {
       date: {
         year: date.year,
         month: date.month,
+        week: this.getWeekNumber(date),
         day: date.day,
       },
-      type: {
-        id: type.id,
-        name: type.name,
-      },
+      type: type,
+      subType: subType,
       time,
       description,
       completed,
-      workoutDate: new Date(
-        this.ngbDateParserFormatter.format(this.workoutForm.value.date)
-      ).toUTCString(),
-      created: new Date(Date.now()).toUTCString(),
+      workoutDate: Timestamp.fromDate(this.getDateFromNgbDate(this.workoutForm.value.date)),
+      created: Timestamp.now(),
     };
+  }
+
+  private getWeekNumber(date: Date): number {
+    let currentDate = this.getDateFromNgbDate(date);
+    currentDate.setHours(0);
+    const startDate = new Date(currentDate.getFullYear(), 0, 1);
+
+    var days = Math.floor(((currentDate as any) - (startDate as any)) /
+        (24 * 60 * 60 * 1000));
+    var weekNumber = Math.ceil(days / 7);
+
+    return weekNumber;
+  }
+
+  private getDateFromNgbDate(date: any): Date {
+    return new Date(
+      this.ngbDateParserFormatter.format(date)
+    );
   }
 
   private successToast() {
