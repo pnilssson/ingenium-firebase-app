@@ -99,7 +99,7 @@ export class WorkoutFormComponent implements OnInit {
       this.subTypes = res;
       this.workoutForm.controls?.['subType'].patchValue(
         this.subTypes.find(
-          (a) => a.name == (this.workout ? this.workout.subType?.name : null)
+          (a) => a.name == (this.workout ? this.workout.subType?.name : 'None')
         )
       );
     }); 
