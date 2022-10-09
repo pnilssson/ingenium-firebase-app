@@ -93,16 +93,15 @@ export class WorkoutFormComponent implements OnInit {
 
   getSubTypes() {
     this.apiService
-    .getSubTypes(this.f['type'].value.id)
-    .pipe(takeUntil(this.destroy$))
-    .subscribe((res) => {
-      this.subTypes = res;
-      this.workoutForm.controls?.['subType'].patchValue(
-        this.subTypes.find(
-          (a) => a.name == (this.workout ? this.workout.subType?.name : 'None')
-        )
-      );
-    }); 
+      .getSubTypes(this.f['type'].value.id)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((res) => {
+        this.subTypes = res;
+        this.workoutForm.controls?.['subType'].patchValue(
+          this.subTypes.find((a) => a.name == this.workout?.subType?.name) ??
+            null
+        );
+      });
   }
 
   onDateSelect(e: any) {
@@ -153,7 +152,8 @@ export class WorkoutFormComponent implements OnInit {
   }
 
   private getWorkout(): Workout {
-    const { time, description, date, type, subType, completed } = this.workoutForm.value;
+    const { time, description, date, type, subType, completed } =
+      this.workoutForm.value;
     return {
       date: {
         year: date.year,
@@ -162,11 +162,13 @@ export class WorkoutFormComponent implements OnInit {
         day: date.day,
       },
       type: type,
-      subType: subType ? subType : null,
+      subType: subType,
       time,
       description,
       completed,
-      workoutDate: Timestamp.fromDate(this.getDateFromNgbDate(this.workoutForm.value.date)),
+      workoutDate: Timestamp.fromDate(
+        this.getDateFromNgbDate(this.workoutForm.value.date)
+      ),
       created: Timestamp.now(),
     };
   }
@@ -176,17 +178,16 @@ export class WorkoutFormComponent implements OnInit {
     currentDate.setHours(0);
     const startDate = new Date(currentDate.getFullYear(), 0, 1);
 
-    var days = Math.floor(((currentDate as any) - (startDate as any)) /
-        (24 * 60 * 60 * 1000));
+    var days = Math.floor(
+      ((currentDate as any) - (startDate as any)) / (24 * 60 * 60 * 1000)
+    );
     var weekNumber = Math.ceil(days / 7);
 
     return weekNumber;
   }
 
   private getDateFromNgbDate(date: any): Date {
-    let newDate = new Date(
-      this.ngbDateParserFormatter.format(date)
-    );
+    let newDate = new Date(this.ngbDateParserFormatter.format(date));
     newDate.setHours(new Date(Date.now()).getHours());
     newDate.setMinutes(new Date(Date.now()).getMinutes());
     newDate.setSeconds(new Date(Date.now()).getSeconds());
