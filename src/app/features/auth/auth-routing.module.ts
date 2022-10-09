@@ -8,14 +8,17 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
+    title: 'Ingenium | Sign in',
     component: AuthComponent,
   },
   {
     path: 'sign-up',
+    title: 'Ingenium | Sign up',
     component: SignUpComponent,
   },
   {
     path: 'forgot-password',
+    title: 'Ingenium | Forgot password',
     component: ForgotPasswordComponent,
   },
 ];

@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 const routes: Routes = [
   {
     path: '',
+    title: 'Ingenium | Dashboard',
     component: AthleteComponent,
     children: [
       {
@@ -16,8 +17,8 @@ const routes: Routes = [
         pathMatch: 'full'
       },
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'calendar', component: CalendarComponent },
-      { path: 'benchmarks', component: BenchmarksComponent }
+      { path: 'calendar', title: 'Ingenium | Calendar', component: CalendarComponent },
+      { path: 'benchmarks', title: 'Ingenium | Dashboard', component: BenchmarksComponent }
     ],
   },
 ];
