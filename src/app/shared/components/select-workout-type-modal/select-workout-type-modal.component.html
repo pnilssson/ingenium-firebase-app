@@ -1,0 +1,48 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="modal-basic-title">Select workout type</h5>
+  <button type="button" class="btn-close" aria-label="Close" (click)="close()"></button>
+</div>
+<div class="modal-body">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-3">
+        <div role="button" class="workoutType strength fw-bold" (click)="openModal('Strength')">
+          <span class="p-3 d-flex flex-column align-items-center">
+            <fa-icon [icon]="faDumbbell" size="4x" class="mb-2 strength-icon" [styles]="{'color': 'blue-300'}"></fa-icon>
+            Strength
+          </span>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div role="button" class="workoutType conditioning fw-bold"
+          (click)="openModal('Conditioning')">
+          <span class="p-3 d-flex flex-column align-items-center fw-bold">
+            <fa-icon [icon]="faPersonRunning" size="4x" class="mb-2 conditioning-icon"></fa-icon>
+            Conditioning
+          </span>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div role="button" class="workoutType fw-bold sport" (click)="openModal('Sport')">
+          <span class="p-3 d-flex flex-column align-items-center">
+            <fa-icon [icon]="faStopwatch" size="4x" class="mb-2 sport-icon"></fa-icon>
+            Sport
+          </span>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div role="button" class="workoutType fw-bold other" (click)="openModal()">
+          <span class="p-3 d-flex flex-column align-items-center">
+            <fa-icon [icon]="faHeart" size="4x" class="mb-2 other-icon"></fa-icon>
+            Other
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-ing-primary" (click)="close()">
+    Close
+  </button>
+</div>

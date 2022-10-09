@@ -15,6 +15,8 @@ export class WorkoutSmallComponent implements OnInit {
   @Input() showDescription: boolean = false;
 
   icon: IconProp | undefined;
+  background = 'other';
+  iconColor = 'other-icon';
   faPen = faPen;
   constructor(private modalService: NgbModal) {}
 
@@ -28,18 +30,25 @@ export class WorkoutSmallComponent implements OnInit {
     });
 
     modalRef.componentInstance.workout = this.workout;
+    modalRef.componentInstance.workoutType = this.workout?.type.name;
   }
 
   setIcon() {
     switch (this.workout?.type.name) {
       case 'Strength':
         this.icon = faDumbbell;
+        this.background = 'strength';
+        this.iconColor = 'strength-icon';
         break;
       case 'Conditioning':
         this.icon = faPersonRunning;
+        this.background = 'conditioning';
+        this.iconColor = 'conditioning-icon';
         break;
       case 'Sport':
         this.icon = faStopwatch;
+        this.background = 'sport';
+        this.iconColor = 'sport-icon';
         break;
       default:
         this.icon = faHeart;

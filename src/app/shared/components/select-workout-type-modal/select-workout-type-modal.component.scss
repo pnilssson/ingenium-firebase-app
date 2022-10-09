@@ -1,0 +1,9 @@
+@import "../../../../mixins.scss";
+
+.workoutType {
+  border-radius: 0.5rem;
+}
+
+.workoutType:hover {
+  @include bs-primary;
+}

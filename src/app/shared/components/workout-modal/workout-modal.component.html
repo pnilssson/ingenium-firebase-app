@@ -12,6 +12,7 @@
 <div class="modal-body">
   <app-workout-form
     [workout]="workout"
+    [workoutType]="workoutType"
     (onSave)="close()"
     (onCancel)="close()"
   ></app-workout-form>

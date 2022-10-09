@@ -1,4 +1,7 @@
 @import "~bootstrap/dist/css/bootstrap.css";
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "mixins.scss";
 
 .small-center-container {
   display: flex;
@@ -25,15 +28,48 @@
   background-color: #2B1C40 !important;
 }
 
+.bg-ing-medium {
+  background-color: #7C53A6 !important;
+}
+
 .bg-ing-light { 
   background-color: #faf4ffb6 !important;
 } 
 
 .bs-primary {
-  border: 0;
-  border-radius: 0.375rem;
-  -webkit-box-shadow: 0 1px 2px #3c40434d, 0 1px 3px 1px #3c404326;
-  box-shadow: 0 1px 2px #3c40434d, 0 1px 3px 1px #3c404326;
+  @include bs-primary;
+}
+
+.strength {
+  background-color: $orange-100;
+}
+
+.strength-icon {
+  color: $orange-300;
+}
+
+.conditioning {
+  background-color: $blue-100;
+}
+
+.conditioning-icon {
+  color: $blue-300;
+}
+
+.sport {
+  background-color: $green-100;
+}
+
+.sport-icon {
+  color: $green-300;
+}
+
+.other {
+  background-color: $red-100;
+}
+
+.other-icon {
+  color: $red-300;
 }
 
 // NGB Datepicker

@@ -25,6 +25,7 @@ import { WorkoutType } from '../../models/workoutType';
 })
 export class WorkoutFormComponent implements OnInit {
   @Input() workout: Workout | undefined;
+  @Input() workoutType: 'Strength' | 'Conditioning' | 'Sport' | null = null;
 
   @Output() onSave = new EventEmitter();
   @Output() onCancel = new EventEmitter();
@@ -83,7 +84,7 @@ export class WorkoutFormComponent implements OnInit {
         this.workoutTypes = res;
         this.workoutForm.controls?.['type'].patchValue(
           this.workoutTypes.find(
-            (a) => a.name == (this.workout ? this.workout.type.name : 'Other')
+            (a) => a.name == (this.workoutType ? this.workoutType : 'Other')
           )
         );
         this.getSubTypes();
@@ -161,7 +162,7 @@ export class WorkoutFormComponent implements OnInit {
         day: date.day,
       },
       type: type,
-      subType: subType,
+      subType: subType ? subType : null,
       time,
       description,
       completed,
@@ -183,9 +184,13 @@ export class WorkoutFormComponent implements OnInit {
   }
 
   private getDateFromNgbDate(date: any): Date {
-    return new Date(
+    let newDate = new Date(
       this.ngbDateParserFormatter.format(date)
     );
+    newDate.setHours(new Date(Date.now()).getHours());
+    newDate.setMinutes(new Date(Date.now()).getMinutes());
+    newDate.setSeconds(new Date(Date.now()).getSeconds());
+    return newDate;
   }
 
   private successToast() {

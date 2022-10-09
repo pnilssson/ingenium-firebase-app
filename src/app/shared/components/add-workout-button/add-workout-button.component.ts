@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { WorkoutModalComponent } from '../workout-modal/workout-modal.component';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { SelectWorkoutTypeModalComponent } from '../select-workout-type-modal/select-workout-type-modal.component';
 
 @Component({
   selector: 'app-add-workout-button',
@@ -8,14 +8,13 @@ import { WorkoutModalComponent } from '../workout-modal/workout-modal.component'
   styleUrls: ['./add-workout-button.component.scss']
 })
 export class AddWorkoutButtonComponent implements OnInit {
-
   constructor(private modalService: NgbModal) { }
 
   ngOnInit() {
   }
 
   openModal() {
-    const modalRef = this.modalService.open(WorkoutModalComponent, {
+    const modalRef = this.modalService.open(SelectWorkoutTypeModalComponent, {
       size: 'lg',
     });
   }

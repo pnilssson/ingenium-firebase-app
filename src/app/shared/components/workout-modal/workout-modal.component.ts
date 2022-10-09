@@ -10,6 +10,7 @@ import { Workout } from '../../models/workout';
 })
 export class WorkoutModalComponent implements OnInit {
   @Input() workout: Workout | undefined;
+  @Input() workoutType: 'Strength' | 'Conditioning' | 'Sport' | null = null;
 
   constructor(public activeModal: NgbActiveModal) {}
 
