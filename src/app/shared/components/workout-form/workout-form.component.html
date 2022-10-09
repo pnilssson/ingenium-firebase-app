@@ -108,7 +108,7 @@
         ></textarea>
         <label for="description">Description</label>
       </div>
-      <div class="me-2 mt-1 float-end fw-light fs-small">{{ f['description'].value?.length }} / 2500 </div>
+      <div class="me-2 mt-1 float-end fw-light fs-small">{{ f['description'].value?.length ?? 0 }} / 2500 </div>
     </div>
   </div>
   <div class="row">
